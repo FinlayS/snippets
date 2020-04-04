@@ -1,0 +1,16 @@
+{
+  "name": "snippets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^4.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commitmsg": "node .githooks/prepare-commit-msg/prepend-branch-id"
+  },
+  "author": "",
+  "license": "ISC"
+}
