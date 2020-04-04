@@ -43,9 +43,11 @@ if (/COMMIT_EDITMSG/g.test(commitFile)) {
 
           // '(no branch)' indicates we are in a rebase or other non-HEAD scenario
           if (name !== '(no branch)') {
-            const branchId = utils.getBranchId(name)
+            const branchId = utils.getBranchId(name);
             const contentsStartWithValidBranchId = utils.startsWithValidBranchId(contents.toString());
             if (!branchId && !contentsStartWithValidBranchId) {
+              console.log('branchId',branchId )
+              console.log('contentsStartWithValidBranchId',contentsStartWithValidBranchId )
               process.stdout.write(`COMMIT FAILED: No {JIRA_ID} or HOTFIX found in branch name or at the beginning of your commit message.\n`);
               process.exitCode = 1;
               process.exit()
