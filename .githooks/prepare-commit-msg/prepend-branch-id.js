@@ -11,9 +11,7 @@ let contents = null;
 const commitFile = process.env.HUSKY_GIT_PARAMS;
 
 // expect .git/COMMIT_EDITMSG
-console.log('bob-before', commitFile);
 if (/COMMIT_EDITMSG/g.test(commitFile)) {
-  console.log('bob-after');
   // look for current branch name
   exec('git branch | grep \'*\'',
     function (err, stdout) {
@@ -45,11 +43,13 @@ if (/COMMIT_EDITMSG/g.test(commitFile)) {
           if (name !== '(no branch)') {
             const branchId = utils.getBranchId(name);
             const contentsStartWithValidBranchId = utils.startsWithValidBranchId(contents.toString());
-            console.log('branchId',branchId )
-            console.log('contentsStartWithValidBranchId',contentsStartWithValidBranchId )
+
+            console.log('branchId',branchId ); // TODO remove me
+            console.log('contentsStartWithValidBranchId',contentsStartWithValidBranchId ); // TODO remove me
+
             if (!branchId && !contentsStartWithValidBranchId) {
 
-              process.stdout.write(`COMMIT FAILED: No {JIRA_ID} or HOTFIX found in branch name or at the beginning of your commit message.\n`);
+              process.stdout.write(`COMMIT FAILED: No {JIRA_ID} branch name or at the beginning of your commit message.\n`);
               process.exitCode = 1;
               process.exit()
             }
