@@ -10,8 +10,9 @@ const commitFile = process.env.GIT_PARAMS;
 
 
 // expect .git/COMMIT_EDITMSG
+console.log('bob-before', commitFile)
 if (/COMMIT_EDITMSG/g.test(commitFile)) {
-  console.log('bob')
+  console.log('bob-after')
   // look for current branch name
   exec('git branch | grep \'*\'',
     function (err, stdout) {
