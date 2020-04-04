@@ -1,12 +1,14 @@
 #!/usr/bin/env node
+require("dotenv");
+const exec = require('child_process').exec;
+const util = require('util');
+const fs = require('fs');
 
-const exec = require('child_process').exec
-const util = require('util')
-const fs = require('fs')
-const utils = require('../utils')
-let contents = null
+const utils = require('../utils');
 
-const commitFile = process.env.GIT_PARAMS
+let contents = null;
+
+const commitFile = process.env.HUSKY_GIT_PARAMS;
 
 // expect .git/COMMIT_EDITMSG
 if (/COMMIT_EDITMSG/g.test(commitFile)) {
@@ -19,13 +21,13 @@ if (/COMMIT_EDITMSG/g.test(commitFile)) {
         process.exit(0)
       }
       // opens .git/COMMIT_EDITMSG.
-      contents = fs.readFileSync(commitFile)
+      contents = fs.readFileSync(commitFile);
 
       // trims extra characters from start/end of line
-      let name = stdout.replace('* ', '').replace('\n', '')
+      let name = stdout.replace('* ', '').replace('\n', '');
 
       // On the release branch: no need for Jira ticket ID
-      if (name.includes('release')) process.exit(0)
+      if (name.includes('release')) process.exit(0);
 
       // If the branch has a description, pull that
       exec('git config branch.' + name + '.description',
@@ -39,19 +41,24 @@ if (/COMMIT_EDITMSG/g.test(commitFile)) {
 
           // '(no branch)' indicates we are in a rebase or other non-HEAD scenario
           if (name !== '(no branch)') {
-            const branchId = utils.getBranchId(name)
-            const contentsStartWithValidBranchId = utils.startsWithValidBranchId(contents.toString())
+            const branchId = utils.getBranchId(name);
+            const contentsStartWithValidBranchId = utils.startsWithValidBranchId(contents.toString());
+
+            console.log('branchId',branchId ); // TODO remove me
+            console.log('contentsStartWithValidBranchId',contentsStartWithValidBranchId ); // TODO remove me
+
             if (!branchId && !contentsStartWithValidBranchId) {
-              process.stdout.write(`COMMIT FAILED: No {JIRA_ID} or HOTFIX found in branch name or at the beginning of your commit message.\n`)
-              process.exitCode = 1
+
+              process.stdout.write(`COMMIT FAILED: No {JIRA_ID} branch name or at the beginning of your commit message.\n`);
+              process.exitCode = 1;
               process.exit()
             }
 
             // Prepend ID to original contents.
-            if (!contentsStartWithValidBranchId) contents = util.format(`${branchId.toUpperCase()} ${contents}\n`)
+            if (!contentsStartWithValidBranchId) contents = util.format(`${branchId.toUpperCase()} ${contents}\n`);
 
             // write contents back out to .git/COMMIT_EDITMSG
-            fs.writeFileSync(commitFile, contents)
+            fs.writeFileSync(commitFile, contents);
             process.exit(0)
           } else {
             process.exit(0)
