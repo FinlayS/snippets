@@ -56,7 +56,6 @@ if (/COMMIT_EDITMSG/g.test(commitFile)) {
 
             // write contents back out to .git/COMMIT_EDITMSG
             fs.writeFileSync(commitFile, contents);
-            console.log(contents);
             process.exit(0)
           } else {
             process.exit(0)
