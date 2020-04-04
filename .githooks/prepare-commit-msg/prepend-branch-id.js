@@ -7,10 +7,11 @@ const utils = require('../utils')
 let contents = null
 
 const commitFile = process.env.GIT_PARAMS;
-console.log('bob')
+
 
 // expect .git/COMMIT_EDITMSG
 if (/COMMIT_EDITMSG/g.test(commitFile)) {
+  console.log('bob')
   // look for current branch name
   exec('git branch | grep \'*\'',
     function (err, stdout) {
