@@ -17,7 +17,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "node .githooks/prepare-commit-msg/prepend-branch-id",
-      "pre-commit": ".gethooks/prepare-commit-msg/npm-version-check.sh"
+      "pre-commit": ".scripts/npm-version-check.sh"
     }
   }
 }
