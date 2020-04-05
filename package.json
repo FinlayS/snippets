@@ -22,6 +22,12 @@
     "husky": "^4.2.3",
     "prettier": "^2.0.2"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "node .githooks/prepare-commit-msg/prepend-branch-id",
+      "pre-commit": "lint-staged"
+    }
+  },
   "scripts": {
     "lint": "eslint *.js ./src",
     "prettier": "prettier \"test/**/*.js\" \"test/**/*.jsx\" \"src/**/*.js\" \"src/**/*.jsx\" --write",
@@ -41,11 +47,5 @@
     }
   },
   "author": "",
-  "license": "ISC",
-  "husky": {
-    "hooks": {
-      "commit-msg": "node .githooks/prepare-commit-msg/prepend-branch-id",
-      "pre-commit": "lint-staged"
-    }
-  }
+  "license": "ISC"
 }
