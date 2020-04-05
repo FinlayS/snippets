@@ -23,21 +23,21 @@
     "lint-staged": "^10.1.2",
     "prettier": "^2.0.2"
   },
+  "scripts": {
+    "lint": "echo \"Linting....\"; eslint \"**/*.js\"",
+    "prettierw": "prettier \"test/**/*.js\" \"test/**/*.jsx\" \"src/**/*.js\" \"src/**/*.jsx\" --write",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "node .githooks/prepare-commit-msg/prepend-branch-id",
       "pre-commit": "lint-staged"
     }
   },
-  "scripts": {
-    "lint": "echo \"Linting....\"; eslint \"**/*.js\"",
-    "prettierw": "prettier \"test/**/*.js\" \"test/**/*.jsx\" \"src/**/*.js\" \"src/**/*.jsx\" --write",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
-      "eslint --debug --fix"
+      "eslint --fix"
     ],
     "*.json": [
       "prettier --write"

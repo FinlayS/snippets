@@ -26,7 +26,6 @@ module.exports = {
         argsIgnorePattern: "^_",
       },
     ],
-
     semi: ["error", "always"],
     quotes: ["error", "double"],
     indent: ["error", 4],
