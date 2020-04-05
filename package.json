@@ -7,16 +7,45 @@
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "husky": "^4.2.3"
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.3",
+    "prettier": "^2.0.2"
   },
   "scripts": {
+    "lint": "eslint *.js ./src",
+    "prettier": "prettier \"test/**/*.js\" \"test/**/*.jsx\" \"src/**/*.js\" \"src/**/*.jsx\" --write",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,jsx}": [
+        "prettier --write",
+        "eslint --rulesdir=build/eslint-rules/",
+        "git add"
+      ],
+      "*.json": [
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "author": "",
   "license": "ISC",
   "husky": {
     "hooks": {
-      "commit-msg": "node .githooks/prepare-commit-msg/prepend-branch-id"
+      "commit-msg": "node .githooks/prepare-commit-msg/prepend-branch-id",
+      "pre-commit": "lint-staged"
     }
   }
 }
