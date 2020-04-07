@@ -16,7 +16,7 @@
   "license": "ISC",
   "husky": {
     "hooks": {
-      "commit-msg": "node .githooks/prepare-commit-msg/prepend-branch-id"
+      "commit-msg": "node ./githooks/prepare-commit-msg/prepend-branch-id"
     }
   }
 }
