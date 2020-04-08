@@ -10,6 +10,8 @@ let contents = null;
 
 const commitFile = process.env.HUSKY_GIT_PARAMS;
 
+
+console.log('commitFile', commitFile)
 // expect .git/COMMIT_EDITMSG
 if (/COMMIT_EDITMSG/g.test(commitFile)) {
   // look for current branch name
