@@ -13,9 +13,13 @@
     "husky": "^4.2.3",
     "webpack-dev-server": "^3.10.3"
   },
+  "engines": {
+    "node": "~10.0.0"
+  },
   "scripts": {
     "start:dev": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check:version": "./scripts/npm-version-check.sh"
   },
   "author": "",
   "license": "ISC",
