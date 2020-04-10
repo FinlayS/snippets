@@ -5,3 +5,4 @@ const doThis = (msg) => (
 );
 
 doThis(WelcomeMessage);
+
