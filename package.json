@@ -42,13 +42,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.json": [
-      "prettier --write"
-    ]
+    "*.{js,md}": ["eslint", "prettier --write"]
   },
   "author": "",
   "license": "ISC"
