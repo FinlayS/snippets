@@ -1,4 +1,5 @@
 import React from 'react'
+import 'whatwg-fetch'
 
 function Login() {
   const [state, setState] = React.useReducer((s, a) => ({...s, ...a}), {

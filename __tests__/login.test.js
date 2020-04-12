@@ -1,7 +1,7 @@
 // __tests__/login.js
 // again, these first two imports are something you'd normally handle in
 // your testing framework configuration rather than importing them in every file.
-'use strict';
+
 import '@testing-library/jest-dom'
 import React from 'react'
 import {render, fireEvent, screen} from '@testing-library/react'
@@ -37,9 +37,4 @@ test('allows the user to login successfully', async () => {
   // but jest-dom will give you better error messages which is why it's recommended
   expect(alert).toHaveTextContent(/congrats/i);
   expect(window.localStorage.getItem('token')).toEqual(fakeUserResponse.token)
-});
-
-test('shows how async / await works', async () => {
-  const value = await Promise.resolve(true);
-  expect(value).toBe(true);
 });

@@ -27,7 +27,8 @@
     "dev-server": "^0.1.0",
     "husky": "^4.2.3",
     "jest": "^25.3.0",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "whatwg-fetch": "^3.0.0"
   },
   "engines": {
     "node": "~10.16.0"
