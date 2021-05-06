@@ -1,0 +1,44 @@
+{
+  "applicant": {
+    "fullName": {
+      "firstName": "Testing",
+      "lastName": "Bob"
+    },
+    "address": {
+      "line1": "160 Buckingham Palace Road",
+      "line2": "",
+      "town": "LONDON",
+      "postcode": "SW1W 9UD",
+      "country": "UK"
+    },
+    "pastAddresses": [],
+    "otherOwnedProperties": [],
+    "timeAtCurrentAddress": 3,
+    "propertyStatus": 2,
+    "birthDate": "1966-05-03",
+    "email": "TestingBob@bob.com",
+    "mobile": {
+      "phone": "+447988877777",
+      "verificationStatus": "NOT_VALIDATED"
+    },
+    "custom": {
+      "nextStep": "quote-result"
+    }
+  },
+  "loanee": {
+    "name": "ESME LOANS LIMITED",
+    "identifier": "10411077",
+    "typeOfBusiness": "LIMITED_COMPANY"
+  },
+  "loanRequest": {
+    "loanPurpose": "WORK_CAPITAL",
+    "amount": 123123.0
+  },
+  "custom": {
+    "nextStep": "personal-address"
+  },
+  "meta": { "ui": { "step": "personalInformation", "wasStepCompleted": true } },
+  "uuid": "case_uuid_test_1",
+  "caseToken": "case_token_test_1",
+  "active": true
+}

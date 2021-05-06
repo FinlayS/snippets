@@ -1,5 +1,5 @@
 module.exports = {
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: ["**/*.{ts,tsx}", "!**/node_modules/**"],
   coverageReporters: ["json", "text"],
   moduleDirectories: ["node_modules", "."],
